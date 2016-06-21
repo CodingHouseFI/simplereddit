@@ -13,18 +13,15 @@
 
 const mysql = require('mysql');
 
-let db = mysql.createConnection({
+let connectConfig = process.env.JAWSDB_URL || {
   host: 'localhost',
   user: 'root',
   password: process.env.MYSQL_PASSWORD,
   database: 'testdb'
-});
+};
+
+let db = mysql.createConnection(connectConfig);
 
 db.connect();
-
-
-// db.query('create database if not exists ')
-
-
 
 module.exports = db;
